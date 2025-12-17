@@ -1,0 +1,20 @@
+[
+  {
+      "username": "student",
+      "password": "Password123",
+      "message": "Congratulations student. You successfully logged in!",
+      "url": "/logged-in-successfully"
+    },  
+  {
+      "username": "wrongUser",
+      "password": "Password123",
+      "message": "Your username is invalid!",
+      "url": "/practice-test-login"
+    },
+    {
+      "username": "student",
+      "password": "WrongPassword",
+      "message": "Your password is invalid!",
+      "url": "/practice-test-login"
+    }
+]

@@ -1,0 +1,21 @@
+{
+  "name": "curso-cypress",
+  "version": "1.0.0",
+  "description": "este es un proecto de cypress para automatizacion de pruebas de software",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cypress run",
+    "test:chrome": "npx cypress run --browser chrome",
+    "test:chrome:users": "npx cypress run --browser chrome --spec cypress/e2e/users/*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "cypress": "^15.7.0"
+  },
+  "dependencies": {
+    "cypress-file-upload": "^5.0.8"
+  }
+}
