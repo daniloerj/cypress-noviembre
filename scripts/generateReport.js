@@ -41,3 +41,23 @@ if (res.status !== 0) {
 }
 
 console.log('Report generated successfully at', outDir)
+
+// Ensure an index.html exists at the root of outDir for GitHub Pages
+try {
+  const files = fs.readdirSync(outDir).filter(f => f.toLowerCase().endsWith('.html'))
+  const indexPath = path.join(outDir, 'index.html')
+  if (!fs.existsSync(indexPath)) {
+    if (files.length > 0) {
+      // copy the first html file to index.html
+      const first = path.join(outDir, files[0])
+      fs.copyFileSync(first, indexPath)
+      console.log('Copied', files[0], 'to index.html for Pages compatibility')
+    } else {
+      console.warn('No HTML files found in', outDir)
+    }
+  } else {
+    console.log('index.html already present')
+  }
+} catch (err) {
+  console.warn('Could not ensure index.html:', err && err.message)
+}
