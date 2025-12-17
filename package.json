@@ -6,14 +6,20 @@
   "scripts": {
     "test": "npx cypress run",
     "test:chrome": "npx cypress run --browser chrome",
-    "test:chrome:users": "npx cypress run --browser chrome --spec cypress/e2e/users/*"
+    "test:chrome:users": "npx cypress run --browser chrome --spec cypress/e2e/users/*",
+    "test:chrome:mochawesome": "npx cypress run --browser chrome --spec cypress/e2e/users/* --reporter mochawesome --reporter-options reportDir=reports,reportFilename=mochawesome,overwrite=false,html=false,json=true",
+    "merge-reports": "npx mochawesome-merge reports/*.json > reports/mochawesome.json",
+    "generate-report": "npx marge reports/mochawesome.json -f report -o report"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "cypress": "^15.7.0"
+    "cypress": "^15.7.0",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.2.0",
+    "mochawesome-report-generator": "^6.1.0"
   },
   "dependencies": {
     "cypress-file-upload": "^5.0.8"

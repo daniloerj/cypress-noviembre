@@ -27,15 +27,16 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run Cypress tests (Chrome) and produce JUnit
+      - name: Run Cypress tests with mochawesome reporter
         run: |
-          mkdir -p results
-          npm run test:chrome:users -- --reporter junit --reporter-options mochaFile=results/junit.xml
+          mkdir -p reports
+          npm run test:chrome:mochawesome
 
-      - name: Convert JUnit XML to HTML
+      - name: Merge mochawesome JSON results and generate HTML
         run: |
           mkdir -p report
-          npx junit-viewer --results=results/junit.xml --save=report/index.html || echo "junit-viewer failed or produced no results"
+          npx mochawesome-merge reports/*.json > reports/mochawesome.json || true
+          npx marge reports/mochawesome.json -f report -o report || npx mochawesome-report-generator reports/mochawesome.json -o report || echo "Report generation failed"
 
       - name: Upload report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
