@@ -8,7 +8,7 @@
     "test:chrome": "npx cypress run --browser chrome",
     "test:chrome:users": "npx cypress run --browser chrome --spec cypress/e2e/users/*",
     "clean-reports": "rm -rf reports report && mkdir -p reports report",
-  "test:chrome:mochawesome": "npm run clean-reports && REPORT_NAME=mochawesome-$(date +%s) npx cypress run --browser chrome --spec cypress/e2e/users/* --reporter mochawesome --reporter-options reportDir=reports,reportFilename=$REPORT_NAME,overwrite=false,html=false,json=true",
+  "test:chrome:mochawesome": "npm run clean-reports && REPORT_NAME=mochawesome-$(date +%s) npx cypress run --browser chrome --reporter mochawesome --reporter-options reportDir=reports,reportFilename=$REPORT_NAME,overwrite=false,html=false,json=true",
   "merge-reports": "node scripts/mergeReports.js",
   "generate-report": "node scripts/generateReport.js",
   "report:full": "npm run test:chrome:mochawesome && npm run merge-reports && npm run generate-report"
