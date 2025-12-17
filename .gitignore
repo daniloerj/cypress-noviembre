@@ -64,3 +64,4 @@ npm-debug.log*
 
 #mochaawesome report
 reports/
+report/

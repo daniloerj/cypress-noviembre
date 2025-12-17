@@ -29,16 +29,15 @@ jobs:
         # Recommended: run `npm install` locally and commit the updated package-lock.json
         run: npm install --no-audit --no-fund
 
-      - name: Run Cypress tests with mochawesome reporter
+      - name: Run full report (tests, merge, generate)
         run: |
-          mkdir -p reports
-          npm run test:chrome:mochawesome
+          npm run report:full
 
-      - name: Merge mochawesome JSON results and generate HTML
-        run: |
-          mkdir -p report
-          npx mochawesome-merge reports/*.json > reports/mochawesome.json || true
-          npx marge reports/mochawesome.json -f report -o report || npx mochawesome-report-generator reports/mochawesome.json -o report || echo "Report generation failed"
+      - name: Upload report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mochawesome-report
+          path: report
 
       - name: Upload report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
