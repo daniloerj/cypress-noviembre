@@ -1,5 +1,10 @@
 name: CI - Cypress tests and publish report
 
+# Grant the workflow permissions needed to push artifacts and publish Pages
+permissions:
+  contents: write
+  pages: write
+
 on:
   push:
     branches: [ main ]
