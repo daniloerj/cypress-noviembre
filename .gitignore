@@ -58,3 +58,9 @@ npm-debug.log*
 
 # Cypress local config (if used)
 .cypress/
+
+# GitHub Actions artifacts
+.github/workflows/test-artifacts/
+
+#mochaawesome report
+reports/
